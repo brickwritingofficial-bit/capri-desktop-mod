@@ -390,6 +390,7 @@ internal static class Program
         try
         {
             SettingsRoundTrip(folder);
+            RetentionChecks.Run(folder);
             ProviderNames();
             ProviderMemory();
             DualWrite();
@@ -400,6 +401,7 @@ internal static class Program
             failures += IndependentRollbackChecks.Run(folder);
             failures += NativeReviewChecks.Run(folder);
             failures += CustomProviders.Run(folder);
+            failures += ProviderMessageChecks.Run();
             NullKeys(folder);
             ProviderTransition(folder);
             AdoptedProvider(folder);
